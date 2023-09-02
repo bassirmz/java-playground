@@ -31,10 +31,11 @@ public class ManagerConsumer {
         
         File file = new File(path);
         
-        ValidationManager v = new _provider.getValidationManagerSystem();
-        FileManager f = new _provider.getFileManagerSystem();
-        PrintManager p = new _provider.getPrintManagerSystem();
-        VariableManager var = new _provider.getVariableManagerSystem();
+        
+        ValidationManager v = _provider.getValidationManager();
+        FileManager f = _provider.getFileManager();
+        PrintManager p = _provider.getPrintManager();
+        VariableManager var = _provider.getVariableManager();
         
         ExecutionContext ex = new ExecutionContext();
         Script script = f.readFile(file);
