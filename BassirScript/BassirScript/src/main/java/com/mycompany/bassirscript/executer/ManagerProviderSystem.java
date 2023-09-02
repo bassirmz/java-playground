@@ -14,7 +14,7 @@ import com.mycompany.bassirscript.contracts.VariableManager;
  *
  * @author Bassir
  */
-class ManagerProviderSystem  implements ManagerProvider{
+public class ManagerProviderSystem  implements ManagerProvider{
 
     @Override
     public FileManager getFileManager() {
