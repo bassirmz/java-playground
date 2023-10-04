@@ -1,7 +1,10 @@
+package bassirscript;
 
 
 
 
+
+import java.util.Scanner;
 import models.Script;
 import service.scriptloader.contracts.ScriptLoader;
 import service.CommandFactory;
@@ -23,6 +26,10 @@ import service.scriptloader.contracts.ScriptLoaderProvider;
 public class Main {
     
     public static void main(String[] args) {
+        
+        System.out.println("Enter adress : ");
+        Scanner scanner = new Scanner(System.in);
+        String adress = scanner.nextLine();
         ScriptLoaderProvider _sprovider = new FromFileScriptLoaderProvider();
         
         CommandProvider _cprovider = new CommandProvider();
@@ -31,8 +38,8 @@ public class Main {
         
         ScriptLoader scriptLoader = _sprovider.getScriptLoader();
         
-        if(scriptLoader.validateFile(args[0])){
-            Script script = scriptLoader.script(args[0]);
+        if(scriptLoader.validateFile(adress)){
+            Script script = scriptLoader.script(adress);
             commandFactory.execute(script);
         }
         else{
