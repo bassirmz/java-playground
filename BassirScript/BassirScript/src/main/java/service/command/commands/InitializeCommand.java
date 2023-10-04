@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package service.command.initializecommand;
+package service.command.commands;
 
 import models.ExecutionContext;
 import service.command.contracts.Command;
@@ -33,7 +33,7 @@ class InitializeCommand implements Command{
     }
 
     @Override
-    public void execute(ExecutionContext executionContext, String[] args,String command) {
+    public void execute(String command, String[] args,ExecutionContext executionContext) {
         
         String Value = null;
         for(int x = 1 ; x < args.length ; x++){

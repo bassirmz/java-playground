@@ -14,5 +14,5 @@ public interface Command {
     
     public boolean isMatch(String command,String[] args,ExecutionContext executionContext);
     
-    public void execute(ExecutionContext executionContext,String[] args,String command);
+    public void execute(String command, String[] args,ExecutionContext executionContext);
 }

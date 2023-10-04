@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package service.command.createcommand;
+package service.command.commands;
 
 import models.ExecutionContext;
 import service.command.contracts.Command;
@@ -25,7 +25,7 @@ class CreateCommand implements Command{
     }
 
     @Override
-    public void execute(ExecutionContext executionContext, String[] args,String command) {
+    public void execute(String command, String[] args,ExecutionContext executionContext) {
 
         executionContext.variableList.put(args[0], null);
     }

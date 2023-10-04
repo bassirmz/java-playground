@@ -12,11 +12,11 @@ import java.util.ArrayList;
  */
 public class ScriptLine {
     
-    long lineNumber;
+    public long lineNumber;
     
-    String command;
+    public String command;
     
-    String[] args;
+    public String[] args;
 
     public long getLineNumber() {
         return lineNumber;

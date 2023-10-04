@@ -49,7 +49,13 @@ class FromFileScriptLoader implements ScriptLoader{
             else{
             String command = fReader.nextLine().split(" ")[0];
             
+            command.trim();
+            
             String[] args = new String[fReader.nextLine().split(" ").length];
+            
+            for (String arg : args) {
+                arg.trim();
+            }
             
             ScriptLine scriptline = new ScriptLine(number, command, args);
             
