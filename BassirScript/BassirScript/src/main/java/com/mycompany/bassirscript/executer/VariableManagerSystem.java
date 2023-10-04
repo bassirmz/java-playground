@@ -6,7 +6,7 @@ package com.mycompany.bassirscript.executer;
 
 import com.mycompany.bassirscript.contracts.VariableManager;
 import com.mycompany.bassirscript.executioncontext.ExecutionContext;
-import com.mycompany.bassirscript.executioncontext.Variable;
+import models.Variable;
 
 /**
  *

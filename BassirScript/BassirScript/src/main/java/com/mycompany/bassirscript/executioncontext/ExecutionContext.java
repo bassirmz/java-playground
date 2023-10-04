@@ -4,7 +4,7 @@
  */
 package com.mycompany.bassirscript.executioncontext;
 
-import com.mycompany.bassirscript.executioncontext.Variable;
+import models.Variable;
 import java.util.HashMap;
 import java.util.Map;
 
