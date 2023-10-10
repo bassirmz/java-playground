@@ -41,20 +41,29 @@ class FromFileScriptLoader implements ScriptLoader{
         
         
         for(int number = 1 ;fReader.hasNext();number++){
-            
-            if(fReader.nextLine().startsWith("//")){
-                comments.add(fReader.nextLine());
+            String line = fReader.nextLine();
+            if(line.startsWith("//")){
+                comments.add(line);
                 number--;
             }
             else{
-            String command = fReader.nextLine().split(" ")[0];
+                
+            String[] fullArgs = new String[line.split(" ").length];
+            
+            fullArgs = line.split(" ");
+            
+            String command = fullArgs[0];
             
             command.trim();
             
-            String[] args = new String[fReader.nextLine().split(" ").length];
+            String[] args = new String[line.split(" ").length];
             
-            for (String arg : args) {
-                arg.trim();
+            for (int x = 1; x < fullArgs.length ; x++) {
+                args[x-1] = fullArgs[x];
+            }
+            
+            for (int x = 0 ; args[x] != null ; x++) {
+                args[x].trim();
             }
             
             ScriptLine scriptline = new ScriptLine(number, command, args);

@@ -35,12 +35,11 @@ class InitializeCommand implements Command{
     @Override
     public void execute(String command, String[] args,ExecutionContext executionContext) {
         
-        String Value = null;
-        for(int x = 1 ; x < args.length ; x++){
-            Value.concat(args[x]);
-            Value.concat(" ");
+        String Value = "";
+        for(int x = 1 ; args[x]!= null ; x++){
+            Value = Value + args[x];
+            Value = Value + " ";
         }
-        Value.substring(0, Value.length());
         
         executionContext.variableList.put(command, Value);
     }

@@ -27,6 +27,7 @@ public class Main {
     
     public static void main(String[] args) {
         
+        
         System.out.println("Enter adress : ");
         Scanner scanner = new Scanner(System.in);
         String adress = scanner.nextLine();

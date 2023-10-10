@@ -30,9 +30,11 @@ class TextPrintCommand implements Command{
 
     @Override
     public void execute(String command, String[] args,ExecutionContext executionContext) {
-        for (String arg : args) {
-            System.out.println("arg" + " ");
+        for (int x = 1 ; args[x] != null ; x++) {
+            System.out.print(args[x] + " ");
         }
+        
+        System.out.println("");
     }
     
 }

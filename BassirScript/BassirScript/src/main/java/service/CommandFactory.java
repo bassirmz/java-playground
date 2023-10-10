@@ -44,12 +44,12 @@ public class CommandFactory {
                     initializeCommand.execute(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext);
                 }
                 else{
-                    if(textPrintCommand.isMatch(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext)){
-                        textPrintCommand.execute(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext);
+                    if(variablePrintCommand.isMatch(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext)){
+                        variablePrintCommand.execute(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext);
                     }
                     else{
-                        if(variablePrintCommand.isMatch(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext)){
-                            variablePrintCommand.execute(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext);
+                        if(textPrintCommand.isMatch(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext)){
+                            textPrintCommand.execute(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext);
                         }
                         else{
                             System.err.println("Error in line : " + script.getScriptLines().get(x).lineNumber);

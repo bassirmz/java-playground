@@ -17,7 +17,7 @@ class CreateCommand implements Command{
     public boolean isMatch(String command, String[] args , ExecutionContext executionContext) {
             
         boolean i = false;
-        if("a".equals(command) & args.length == 1){
+        if("a".equals(command) & args[1] == null){
             i = true;
         }
         

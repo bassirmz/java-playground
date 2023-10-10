@@ -18,7 +18,7 @@ class VariablePrintCommand implements Command{
        
         boolean i = false;
         
-        if (command.equals("print") & args[0].equals(":") & args.length == 2){
+        if (command.equals("print") & args[0].equals(":") & args[args.length - 1] == null){
             for (String s : executionContext.variableList.keySet()) {
                 if (args[1].equals(s)){
                     i=true;
@@ -31,8 +31,8 @@ class VariablePrintCommand implements Command{
 
     @Override
     public void execute(String command, String[] args,ExecutionContext executionContext) {
-         
-        System.out.println(args[1]);
+        
+        System.out.println(executionContext.variableList.get(args[1]));
     
     }
 
