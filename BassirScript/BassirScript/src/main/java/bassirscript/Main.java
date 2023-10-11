@@ -4,6 +4,7 @@ package bassirscript;
 
 
 
+import java.io.File;
 import java.util.Scanner;
 import models.Script;
 import service.scriptloader.contracts.ScriptLoader;
@@ -27,20 +28,27 @@ public class Main {
     
     public static void main(String[] args) {
         
+        System.out.println(new File(".").getAbsoluteFile().getAbsolutePath());
+        
         
         System.out.println("Enter adress : ");
+        
         Scanner scanner = new Scanner(System.in);
-        String adress = scanner.nextLine();
-        ScriptLoaderProvider _sprovider = new FromFileScriptLoaderProvider();
+        
+        String address = scanner.nextLine();
         
         CommandProvider _cprovider = new CommandProvider();
         
         CommandFactory commandFactory = new CommandFactory(_cprovider);
         
+        ScriptLoaderProvider _sprovider = new FromFileScriptLoaderProvider();
+        
         ScriptLoader scriptLoader = _sprovider.getScriptLoader();
         
-        if(scriptLoader.validateFile(adress)){
-            Script script = scriptLoader.script(adress);
+        if(scriptLoader.validateFile(address)){
+            
+            Script script = scriptLoader.script(address);
+            
             commandFactory.execute(script);
         }
         else{
