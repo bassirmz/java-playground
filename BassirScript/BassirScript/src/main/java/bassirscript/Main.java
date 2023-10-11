@@ -8,8 +8,7 @@ import java.io.File;
 import java.util.Scanner;
 import models.Script;
 import service.scriptloader.contracts.ScriptLoader;
-import service.CommandFactory;
-import service.command.commands.CommandProvider;
+import service.ScriptExecuter;
 import service.scriptloader.fromfilescriptloader.FromFileScriptLoaderProvider;
 import service.scriptloader.contracts.ScriptLoaderProvider;
 
@@ -37,9 +36,7 @@ public class Main {
         
         String address = scanner.nextLine();
         
-        CommandProvider _cprovider = new CommandProvider();
         
-        CommandFactory commandFactory = new CommandFactory(_cprovider);
         
         ScriptLoaderProvider _sprovider = new FromFileScriptLoaderProvider();
         
@@ -49,7 +46,9 @@ public class Main {
             
             Script script = scriptLoader.script(address);
             
-            commandFactory.execute(script);
+            ScriptExecuter scriptExecuter = new ScriptExecuter();
+            
+            scriptExecuter.execute(script);
         }
         else{
             System.err.println("Invalid File.");

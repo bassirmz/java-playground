@@ -5,7 +5,7 @@
 package service;
 
 import models.ExecutionContext;
-import models.Script;
+import models.ScriptLine;
 import service.command.commands.CommandProvider;
 import service.command.contracts.Command;
 
@@ -25,7 +25,7 @@ public class CommandFactory {
         _executionContext = new ExecutionContext();
     }
     
-    public void execute(Script script){
+    public Command make(ScriptLine scriptLine){
     
          
         Command createCommand = _provider.getCreateCommand();
@@ -33,30 +33,38 @@ public class CommandFactory {
         Command textPrintCommand = _provider.getTextPrintCommand();
         Command variablePrintCommand = _provider.getVariablePrintCommand();
         
-        for(int x = 0;x < script.getScriptLines().size();x++){
-            if(createCommand.isMatch(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext)){
-                createCommand.execute(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext);
+        
+            if(createCommand.isMatch(scriptLine.command, scriptLine.args, _executionContext)){
+                
+                return createCommand;
             }
             else{
-                if(initializeCommand.isMatch(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext)){
-                    initializeCommand.execute(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext);
+                if(initializeCommand.isMatch(scriptLine.command, scriptLine.args, _executionContext)){
+                    
+                    return initializeCommand;
                 }
                 else{
-                    if(variablePrintCommand.isMatch(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext)){
-                        variablePrintCommand.execute(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext);
+                    if(variablePrintCommand.isMatch(scriptLine.command, scriptLine.args, _executionContext)){
+                        
+                        return variablePrintCommand;
                     }
                     else{
-                        if(textPrintCommand.isMatch(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext)){
-                            textPrintCommand.execute(script.getScriptLines().get(x).command, script.getScriptLines().get(x).args, _executionContext);
+                        if(textPrintCommand.isMatch(scriptLine.command, scriptLine.args, _executionContext)){
+                            
+                            return textPrintCommand;
                         }
                         else{
-                            System.err.println("Error in line : " + script.getScriptLines().get(x).lineNumber);
+                            System.err.println("Error in line : " + scriptLine.lineNumber);
+                            
+                            
                         }
                     }
                     
                 }
             }
-        }
+        
+        
+        return null;
     }
     
 }
