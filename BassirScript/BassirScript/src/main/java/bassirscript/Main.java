@@ -6,6 +6,7 @@ package bassirscript;
 
 import java.io.File;
 import java.util.Scanner;
+import models.ExecutionContext;
 import models.Script;
 import service.scriptloader.contracts.ScriptLoader;
 import service.ScriptExecuter;
@@ -48,7 +49,9 @@ public class Main {
             
             ScriptExecuter scriptExecuter = new ScriptExecuter();
             
-            scriptExecuter.execute(script);
+            ExecutionContext executionContext = new ExecutionContext();
+            
+            scriptExecuter.execute(script , executionContext);
         }
         else{
             System.err.println("Invalid File.");

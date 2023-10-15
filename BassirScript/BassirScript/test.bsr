@@ -1,7 +1,7 @@
 //print salam
 print : hello world
 a var
-var = test var
+add var = test var
 print : var
 
 

@@ -20,11 +20,11 @@ class InitializeCommand implements Command{
         boolean i =false;
         
         for (String s : executionContext.variableList.keySet()) {
-            if (command.equals(s)){
+            if (args[0].equals(s)){
                 i=true;
             }
         }
-        if(args[0].equals("=")){}
+        if(args[1].equals("=") & command.equals("add")){}
         else{
             i = false;
         }
@@ -36,12 +36,12 @@ class InitializeCommand implements Command{
     public void execute(String command, String[] args,ExecutionContext executionContext) {
         
         String Value = "";
-        for(int x = 1 ; args[x]!= null ; x++){
+        for(int x = 2 ; args[x]!= null ; x++){
             Value = Value + args[x];
             Value = Value + " ";
         }
         
-        executionContext.variableList.put(command, Value);
+        executionContext.variableList.put(args[0], Value);
     }
 
     public InitializeCommand() {

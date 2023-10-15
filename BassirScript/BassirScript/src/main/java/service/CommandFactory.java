@@ -17,15 +17,13 @@ public class CommandFactory {
 
     
     private final CommandProvider _provider;
-    private final ExecutionContext _executionContext;
     
     public CommandFactory(CommandProvider commandProvider) {
         
         _provider = commandProvider;
-        _executionContext = new ExecutionContext();
     }
     
-    public Command make(ScriptLine scriptLine){
+    public Command make(ScriptLine scriptLine , ExecutionContext executionContext){
     
          
         Command createCommand = _provider.getCreateCommand();
@@ -34,22 +32,22 @@ public class CommandFactory {
         Command variablePrintCommand = _provider.getVariablePrintCommand();
         
         
-            if(createCommand.isMatch(scriptLine.command, scriptLine.args, _executionContext)){
+            if(createCommand.isMatch(scriptLine.command, scriptLine.args, executionContext)){
                 
                 return createCommand;
             }
             else{
-                if(initializeCommand.isMatch(scriptLine.command, scriptLine.args, _executionContext)){
+                if(initializeCommand.isMatch(scriptLine.command, scriptLine.args, executionContext)){
                     
                     return initializeCommand;
                 }
                 else{
-                    if(variablePrintCommand.isMatch(scriptLine.command, scriptLine.args, _executionContext)){
+                    if(variablePrintCommand.isMatch(scriptLine.command, scriptLine.args, executionContext)){
                         
                         return variablePrintCommand;
                     }
                     else{
-                        if(textPrintCommand.isMatch(scriptLine.command, scriptLine.args, _executionContext)){
+                        if(textPrintCommand.isMatch(scriptLine.command, scriptLine.args, executionContext)){
                             
                             return textPrintCommand;
                         }

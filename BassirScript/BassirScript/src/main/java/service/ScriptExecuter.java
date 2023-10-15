@@ -16,9 +16,8 @@ import service.command.contracts.Command;
  */
 public class ScriptExecuter {
     
-    public void execute(Script script){
+    public void execute(Script script,ExecutionContext executionContext){
         
-        ExecutionContext executionContext = new ExecutionContext();
         
         CommandProvider _cprovider = new CommandProvider();
         
@@ -26,9 +25,8 @@ public class ScriptExecuter {
         
         for(ScriptLine scriptLine : script.getScriptLines()){
             
-            System.out.println(scriptLine.command);
             
-            Command command = commandFactory.make(scriptLine);
+            Command command = commandFactory.make(scriptLine,executionContext);
             
             if(command != null){
              
