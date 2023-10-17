@@ -4,6 +4,7 @@ package bassirscript;
 
 
 
+import dependencyinjection.ContainerRegistererFacade;
 import java.io.File;
 import java.util.Scanner;
 import models.ExecutionContext;
@@ -36,7 +37,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         
         String address = scanner.nextLine();
-        
         
         
         ScriptLoaderProvider _sprovider = new FromFileScriptLoaderProvider();
