@@ -5,6 +5,7 @@ package bassirscript;
 
 
 import dependencyinjection.ContainerRegistererFacade;
+import dependencyinjection.ContainerResolverFacade;
 import java.io.File;
 import java.util.Scanner;
 import models.ExecutionContext;
@@ -29,33 +30,11 @@ public class Main {
     
     public static void main(String[] args) {
         
-        System.out.println(new File(".").getAbsoluteFile().getAbsolutePath());
+        ContainerRegistererFacade containerRegistererFacade;
         
+        ContainerResolverFacade containerResolverFacade;
         
-        System.out.println("Enter adress : ");
-        
-        Scanner scanner = new Scanner(System.in);
-        
-        String address = scanner.nextLine();
-        
-        
-        ScriptLoaderProvider _sprovider = new FromFileScriptLoaderProvider();
-        
-        ScriptLoader scriptLoader = _sprovider.getScriptLoader();
-        
-        if(scriptLoader.validateFile(address)){
-            
-            Script script = scriptLoader.script(address);
-            
-            ScriptExecuter scriptExecuter = new ScriptExecuter();
-            
-            ExecutionContext executionContext = new ExecutionContext();
-            
-            scriptExecuter.execute(script , executionContext);
-        }
-        else{
-            System.err.println("Invalid File.");
-        }
+        containerRegistererFacade.register(ExecutionContext , ExecutionContext);
     }
 
     

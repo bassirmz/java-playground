@@ -16,12 +16,10 @@ import service.command.contracts.Command;
  */
 public class ScriptExecuter {
     
-    public void execute(Script script,ExecutionContext executionContext){
+    public void execute(Script script,ExecutionContext executionContext,CommandFactory commandFactory){
         
         
-        CommandProvider _cprovider = new CommandProvider();
         
-        CommandFactory commandFactory = new CommandFactory(_cprovider);
         
         for(ScriptLine scriptLine : script.getScriptLines()){
             
