@@ -10,10 +10,8 @@ import models.ExecutionContext;
 import models.Script;
 import service.CommandFactory;
 import service.ScriptExecuter;
-import service.command.commands.CommandProvider;
 import service.scriptloader.contracts.ScriptLoader;
 import service.scriptloader.contracts.ScriptLoaderProvider;
-import service.scriptloader.fromfilescriptloader.FromFileScriptLoaderProvider;
 
 /**
  *
@@ -21,7 +19,19 @@ import service.scriptloader.fromfilescriptloader.FromFileScriptLoaderProvider;
  */
 public class Application {
     
-    public void Run(ExecutionContext ec,CommandFactory cf,ScriptExecuter se,ScriptLoaderProvider slp){
+    
+    private final CommandFactory commandFactory;
+    private final ScriptExecuter scriptExecuter;
+    private final ScriptLoaderProvider scriptLoaderProvider;
+
+    public Application(CommandFactory commandFactory, ScriptExecuter scriptExecuter, ScriptLoaderProvider scriptLoaderProvider) {
+        
+        this.commandFactory = commandFactory;
+        this.scriptExecuter = scriptExecuter;
+        this.scriptLoaderProvider = scriptLoaderProvider;
+    }
+    
+    public void Run(){
     
         System.out.println(new File(".").getAbsoluteFile().getAbsolutePath());
         
@@ -32,14 +42,15 @@ public class Application {
         
         String address = scanner.nextLine();
         
+        ScriptLoader scriptLoader = scriptLoaderProvider.getScriptLoader();
         
-        ScriptLoader scriptLoader = slp.getScriptLoader();
+        ExecutionContext context = new ExecutionContext();
         
         if(scriptLoader.validateFile(address)){
             
             Script script = scriptLoader.script(address);
             
-            se.execute(script , ec , cf);
+            scriptExecuter.execute(script , context , commandFactory);
         }
         else{
             System.err.println("Invalid File.");
