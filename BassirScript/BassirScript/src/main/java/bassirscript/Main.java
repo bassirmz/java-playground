@@ -4,14 +4,17 @@ package bassirscript;
 
 
 
+import dependencyinjection.ContainerFacadeProvider;
 import dependencyinjection.ContainerRegistererFacade;
 import dependencyinjection.ContainerResolverFacade;
 import java.io.File;
 import java.util.Scanner;
 import models.ExecutionContext;
 import models.Script;
+import service.CommandFactory;
 import service.scriptloader.contracts.ScriptLoader;
 import service.ScriptExecuter;
+import service.command.commands.CommandProvider;
 import service.scriptloader.fromfilescriptloader.FromFileScriptLoaderProvider;
 import service.scriptloader.contracts.ScriptLoaderProvider;
 
@@ -30,11 +33,23 @@ public class Main {
     
     public static void main(String[] args) {
         
-        ContainerRegistererFacade containerRegistererFacade;
         
-        ContainerResolverFacade containerResolverFacade;
+        ContainerFacadeProvider container;
         
-        containerRegistererFacade.register(ExecutionContext , ExecutionContext);
+        ContainerRegistererFacade registry = container.getRegistry();
+        
+        registry.register(CommandFactory.class,CommandFactory.class);
+        
+        registry.register(ScriptLoaderProvider.class,FromFileScriptLoaderProvider.class);
+        
+        registry.register(CommandProvider.class,CommandProvider.class);
+        
+        
+        ContainerResolverFacade resolver = container.getResolver();
+        
+        Application app = resolver.resolve(Application.class);
+        
+        app.Run();
     }
 
     

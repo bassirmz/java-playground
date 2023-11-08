@@ -17,10 +17,7 @@ import service.command.contracts.Command;
 public class ScriptExecuter {
     
     public void execute(Script script,ExecutionContext executionContext,CommandFactory commandFactory){
-        
-        
-        
-        
+    
         for(ScriptLine scriptLine : script.getScriptLines()){
             
             
