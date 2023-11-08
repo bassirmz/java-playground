@@ -1,19 +1,11 @@
 package bassirscript;
 
 
-
-
-
 import dependencyinjection.ContainerFacadeProvider;
 import dependencyinjection.ContainerRegistererFacade;
 import dependencyinjection.ContainerResolverFacade;
-import java.io.File;
-import java.util.Scanner;
-import models.ExecutionContext;
-import models.Script;
+import dependencyinjection.petite.UnNamedContainerProvider;
 import service.CommandFactory;
-import service.scriptloader.contracts.ScriptLoader;
-import service.ScriptExecuter;
 import service.command.commands.CommandProvider;
 import service.scriptloader.fromfilescriptloader.FromFileScriptLoaderProvider;
 import service.scriptloader.contracts.ScriptLoaderProvider;
@@ -34,7 +26,7 @@ public class Main {
     public static void main(String[] args) {
         
         
-        ContainerFacadeProvider container;
+        ContainerFacadeProvider container = new UnNamedContainerProvider();
         
         ContainerRegistererFacade registry = container.getRegistry();
         

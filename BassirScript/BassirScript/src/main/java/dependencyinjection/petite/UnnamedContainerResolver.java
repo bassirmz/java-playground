@@ -5,29 +5,26 @@
 package dependencyinjection.petite;
 
 import dependencyinjection.ContainerResolverFacade;
-import jodd.petite.PetiteContainer;
+import team.unnamed.inject.Injector;
 
 /**
  *
  * @author diego
  */
-public class PetiteContainerResolver implements ContainerResolverFacade{
+public class UnnamedContainerResolver implements ContainerResolverFacade {
 
-    
-    
-    private final PetiteContainer container;
+    private final Injector injector;
 
-    public PetiteContainerResolver(PetiteContainer container) {
-        this.container = container;
+    public UnnamedContainerResolver(Injector injector) {
+        this.injector = injector;
     }
-    
-    
+
     @Override
     public <TAbstract> TAbstract resolve(Class type) {
-        
-        Object resolved = this.container.getBean(type);
-        
-        return (TAbstract) resolved;
+
+        Object instance = injector.getInstance(type);
+
+        return (TAbstract) instance;
     }
-    
+
 }

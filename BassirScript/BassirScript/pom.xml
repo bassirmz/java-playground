@@ -38,14 +38,19 @@
     </build>
     
     
+    <repositories>
+        <repository>
+    <id>unnamed-public</id>
+    <url>https://repo.unnamed.team/repository/unnamed-public/</url>
+</repository>
+    </repositories>
+    
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.jodd/jodd-petite -->
         <dependency>
-            <groupId>org.jodd</groupId>
-            <artifactId>jodd-petite</artifactId>
-            <version>6.0.2</version>
+            <groupId>team.unnamed</groupId>
+            <artifactId>inject</artifactId>
+            <version>2.0.0</version>
         </dependency>
-
     </dependencies>
     
 </project>

@@ -7,32 +7,35 @@ package dependencyinjection.petite;
 import dependencyinjection.ContainerFacadeProvider;
 import dependencyinjection.ContainerRegistererFacade;
 import dependencyinjection.ContainerResolverFacade;
-import jodd.petite.PetiteContainer;
+import team.unnamed.inject.Injector;
 
 /**
  *
  * @author diego
  */
-public class PetiteContainerProvider implements ContainerFacadeProvider{
+public class UnNamedContainerProvider implements ContainerFacadeProvider{
 
     
-    private static final PetiteContainer PetiteContainer = new PetiteContainer();
+    private static final UnnamedModule Module = new UnnamedModule();
     
-    private static final PetiteContaienrRegistry Registry = new PetiteContaienrRegistry(PetiteContainer);
-    
-    private static final PetiteContainerResolver Resolver = new PetiteContainerResolver(PetiteContainer);
+   
+    private static Injector injector;
     
     
     @Override
     public ContainerRegistererFacade getRegistry() {
         
-        return Registry;
+        return Module;
     }
 
     @Override
-    public ContainerResolverFacade getResolver() {
+    public synchronized ContainerResolverFacade getResolver() {
         
-        return Resolver;
+        if(injector==null){
+            injector = Injector.create(Module);
+        }
+        
+        return new UnnamedContainerResolver(injector);
     }
     
 }
