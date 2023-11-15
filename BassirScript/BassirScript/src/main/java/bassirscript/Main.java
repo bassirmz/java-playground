@@ -5,7 +5,10 @@ import dependencyinjection.ContainerFacadeProvider;
 import dependencyinjection.ContainerRegistererFacade;
 import dependencyinjection.ContainerResolverFacade;
 import dependencyinjection.petite.UnNamedContainerProvider;
+import service.A;
+import service.AImpl;
 import service.CommandFactory;
+import service.ScriptExecuter;
 import service.command.commands.CommandProvider;
 import service.scriptloader.fromfilescriptloader.FromFileScriptLoaderProvider;
 import service.scriptloader.contracts.ScriptLoaderProvider;
@@ -36,12 +39,20 @@ public class Main {
         
         registry.register(CommandProvider.class,CommandProvider.class);
         
+        registry.register(ScriptExecuter.class,ScriptExecuter.class);
+        
+        registry.register(Application.class,Application.class);        
         
         ContainerResolverFacade resolver = container.getResolver();
         
-        Application app = resolver.resolve(Application.class);
-        
-        app.Run();
+//        Application app = resolver.resolve(Application.class);
+//                     
+//        app.Run();
+
+            CommandFactory p = resolver.resolve(CommandFactory.class);
+            
+            System.out.println(p);
+          
     }
 
     

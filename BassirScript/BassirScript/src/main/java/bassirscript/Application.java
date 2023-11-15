@@ -18,44 +18,48 @@ import service.scriptloader.contracts.ScriptLoaderProvider;
  * @author Lenovo
  */
 public class Application {
-    
-    
+
     private final CommandFactory commandFactory;
     private final ScriptExecuter scriptExecuter;
     private final ScriptLoaderProvider scriptLoaderProvider;
 
+//    public Application(ScriptLoaderProvider commandFactory) {
+//
+//        this.commandFactory = null;
+//        this.scriptExecuter = null;
+//        this.scriptLoaderProvider = null;
+//
+//    }
+
     public Application(CommandFactory commandFactory, ScriptExecuter scriptExecuter, ScriptLoaderProvider scriptLoaderProvider) {
-        
+
         this.commandFactory = commandFactory;
         this.scriptExecuter = scriptExecuter;
         this.scriptLoaderProvider = scriptLoaderProvider;
     }
-    
-    public void Run(){
-    
+
+    public void Run() {
+
         System.out.println(new File(".").getAbsoluteFile().getAbsolutePath());
-        
-        
+
         System.out.println("Enter adress : ");
-        
+
         Scanner scanner = new Scanner(System.in);
-        
+
         String address = scanner.nextLine();
-        
+
         ScriptLoader scriptLoader = scriptLoaderProvider.getScriptLoader();
-        
+
         ExecutionContext context = new ExecutionContext();
-        
-        if(scriptLoader.validateFile(address)){
-            
+
+        if (scriptLoader.validateFile(address)) {
+
             Script script = scriptLoader.script(address);
-            
-            scriptExecuter.execute(script , context , commandFactory);
-        }
-        else{
+
+            scriptExecuter.execute(script, context, commandFactory);
+        } else {
             System.err.println("Invalid File.");
         }
     }
-    
-    
+
 }

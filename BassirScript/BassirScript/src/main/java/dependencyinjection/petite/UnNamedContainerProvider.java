@@ -19,7 +19,6 @@ public class UnNamedContainerProvider implements ContainerFacadeProvider{
     private static final UnnamedModule Module = new UnnamedModule();
     
    
-    private static Injector injector;
     
     
     @Override
@@ -30,12 +29,9 @@ public class UnNamedContainerProvider implements ContainerFacadeProvider{
 
     @Override
     public synchronized ContainerResolverFacade getResolver() {
+
         
-        if(injector==null){
-            injector = Injector.create(Module);
-        }
-        
-        return new UnnamedContainerResolver(injector);
+        return new UnnamedContainerResolver(Module);
     }
     
 }

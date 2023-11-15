@@ -13,15 +13,24 @@ import team.unnamed.inject.Injector;
  */
 public class UnnamedContainerResolver implements ContainerResolverFacade {
 
-    private final Injector injector;
+   private static Injector injector = null;
 
-    public UnnamedContainerResolver(Injector injector) {
-        this.injector = injector;
+   private final  team.unnamed.inject.Module module;
+   
+   
+    public UnnamedContainerResolver(team.unnamed.inject.Module module) {
+        this.module = module;
     }
 
     @Override
-    public <TAbstract> TAbstract resolve(Class type) {
+    public synchronized <TAbstract> TAbstract resolve(Class type) {
 
+        if(injector==null){
+            
+            injector = Injector.create(module);
+        }
+        
+        
         Object instance = injector.getInstance(type);
 
         return (TAbstract) instance;
