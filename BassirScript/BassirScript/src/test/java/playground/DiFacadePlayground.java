@@ -6,7 +6,7 @@ package playground;
 
 import dependencyinjection.ContainerRegistererFacade;
 import dependencyinjection.ContainerResolverFacade;
-import dependencyinjection.petite.UnNamedContainerProvider;
+import dependencyinjection.unnamed.UnNamedContainerProvider;
 import playground.services.A;
 import playground.services.AImpl;
 

@@ -40,12 +40,21 @@
     
     <repositories>
         <repository>
-    <id>unnamed-public</id>
-    <url>https://repo.unnamed.team/repository/unnamed-public/</url>
-</repository>
+            <id>unnamed-public</id>
+            <url>https://repo.unnamed.team/repository/unnamed-public/</url>
+        </repository>
     </repositories>
     
     <dependencies>
+        
+        
+        <dependency>
+            <groupId>com.acidmanic</groupId>
+            <artifactId>myoccontainer</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        
+        
         <dependency>
             <groupId>team.unnamed</groupId>
             <artifactId>inject</artifactId>

@@ -4,7 +4,8 @@ package bassirscript;
 import dependencyinjection.ContainerFacadeProvider;
 import dependencyinjection.ContainerRegistererFacade;
 import dependencyinjection.ContainerResolverFacade;
-import dependencyinjection.petite.UnNamedContainerProvider;
+import dependencyinjection.myoc.MyocProvider;
+import dependencyinjection.unnamed.UnNamedContainerProvider;
 import service.A;
 import service.AImpl;
 import service.CommandFactory;
@@ -29,7 +30,7 @@ public class Main {
     public static void main(String[] args) {
         
         
-        ContainerFacadeProvider container = new UnNamedContainerProvider();
+        ContainerFacadeProvider container = new MyocProvider();
         
         ContainerRegistererFacade registry = container.getRegistry();
         
@@ -45,13 +46,10 @@ public class Main {
         
         ContainerResolverFacade resolver = container.getResolver();
         
-//        Application app = resolver.resolve(Application.class);
-//                     
-//        app.Run();
+        Application app = resolver.resolve(Application.class);
+                     
+        app.Run();
 
-            CommandFactory p = resolver.resolve(CommandFactory.class);
-            
-            System.out.println(p);
           
     }
 
