@@ -7,7 +7,6 @@ package service;
 import models.ExecutionContext;
 import models.Script;
 import models.ScriptLine;
-import service.command.commands.CommandProvider;
 import service.command.contracts.Command;
 
 /**

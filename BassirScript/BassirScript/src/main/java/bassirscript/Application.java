@@ -23,14 +23,6 @@ public class Application {
     private final ScriptExecuter scriptExecuter;
     private final ScriptLoaderProvider scriptLoaderProvider;
 
-//    public Application(ScriptLoaderProvider commandFactory) {
-//
-//        this.commandFactory = null;
-//        this.scriptExecuter = null;
-//        this.scriptLoaderProvider = null;
-//
-//    }
-
     public Application(CommandFactory commandFactory, ScriptExecuter scriptExecuter, ScriptLoaderProvider scriptLoaderProvider) {
 
         this.commandFactory = commandFactory;
@@ -50,11 +42,11 @@ public class Application {
 
         ScriptLoader scriptLoader = scriptLoaderProvider.getScriptLoader();
 
-        ExecutionContext context = new ExecutionContext();
-
         if (scriptLoader.validateFile(address)) {
 
             Script script = scriptLoader.script(address);
+
+            ExecutionContext context = new ExecutionContext();
 
             scriptExecuter.execute(script, context, commandFactory);
         } else {
