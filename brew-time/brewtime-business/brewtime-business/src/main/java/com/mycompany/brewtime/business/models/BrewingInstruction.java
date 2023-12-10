@@ -16,6 +16,25 @@ public class BrewingInstruction {
     private String title;
     private String description;
     private ArrayList<BrewingStep> steps;
+    private BrewingGadget brewingMethod;
+    private int coffeeAmount;
+
+    public int getCoffeeAmount() {
+        return coffeeAmount;
+    }
+
+    public void setCoffeeAmount(int coffeeAmount) {
+        this.coffeeAmount = coffeeAmount;
+    }
+    
+
+    public BrewingGadget getBrewingMethod() {
+        return brewingMethod;
+    }
+
+    public void setBrewingMethod(BrewingGadget brewingMethod) {
+        this.brewingMethod = brewingMethod;
+    }
 
     public String getTitle() {
         return title;

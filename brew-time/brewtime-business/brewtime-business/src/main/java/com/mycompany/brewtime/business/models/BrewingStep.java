@@ -4,12 +4,44 @@
  */
 package com.mycompany.brewtime.business.models;
 
+import java.sql.Time;
+
 /**
  *
  * @author diego
  */
 public class BrewingStep {
     
+    private long duration;
+    private String title;
+    private String comment;
+    
+    
+    
     
     //TODO: Complete Fields
+
+    public long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(long duration) {
+        this.duration = duration;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }
