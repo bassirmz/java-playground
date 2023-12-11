@@ -7,15 +7,17 @@ Brew Time!
 To do:
 ------
 
- * Complete BrewingStep class add proper fields
-   * Name
-   * Description
-   * ...
-* Create storage model counterparts for brewing step and brewing instruction
+ * Add BrewingInstructionRepository
+ * Complete InstructionService
+   * Add read-steps
+   * Add add-step
+   * Add create-instruction
 
 
 Next week
 ---------
 
-* Complete structure of data access
- * Repository
+* Add presentation layer
+* Add project references 
+* Business services
+* composition hierarchies (services -> repositories, controllers -> services)
