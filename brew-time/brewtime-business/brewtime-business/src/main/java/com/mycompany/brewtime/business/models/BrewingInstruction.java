@@ -11,13 +11,22 @@ import java.util.ArrayList;
  * @author diego
  */
 public class BrewingInstruction {
-    
-    
+
     private String title;
     private String description;
     private ArrayList<BrewingStep> steps;
     private BrewingGadget brewingMethod;
     private int coffeeAmount;
+
+    private long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public int getCoffeeAmount() {
         return coffeeAmount;
@@ -26,7 +35,6 @@ public class BrewingInstruction {
     public void setCoffeeAmount(int coffeeAmount) {
         this.coffeeAmount = coffeeAmount;
     }
-    
 
     public BrewingGadget getBrewingMethod() {
         return brewingMethod;
@@ -59,9 +67,5 @@ public class BrewingInstruction {
     public void setSteps(ArrayList<BrewingStep> steps) {
         this.steps = steps;
     }
-    
-    
-    
-    
-    
+
 }
